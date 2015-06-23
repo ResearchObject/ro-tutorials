@@ -10,7 +10,7 @@ general [JSON](http://json.org/) and Linux/UNIX shell knowledge.
 **improve** by providing [bugs/wishes/suggestions](https://github.com/ResearchObject/ro-tutorials/issues) and 
 [changes](https://github.com/ResearchObject/ro-tutorials/pulls).
 
-*License*: [BSD 2-clause](http://opensource.org/licenses/BSD-2-Clause) - see [LICENSE](../LICENSE)
+*License*: [BSD 2-clause](http://opensource.org/licenses/BSD-2-Clause) - see [LICENSE](../LICENSE) for details.
 
 *Authors*: [Stian Soiland-Reyes](http://orcid.org/0000-0001-9842-9718), 
 [Norman Morrison](http://www.cs.manchester.ac.uk/about-us/staff/profile/?ea=Norman.Morrison), 
