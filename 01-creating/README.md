@@ -263,8 +263,14 @@ To solve #3 we can instead use the "Raw" button at GitHub:
 
 The URIs for raw files on GitHub has changed several times over the last years,
 so we can probably not rely on the above still working in the future.
+Other repositories may unfortunately have even less reliable URIs for downloads
+which may be hard to find, e.g. Dropbox's [web rendering](https://www.dropbox.com/s/yf086tmmjyjpmua/rawdata5.csv?dl=0)
+links to the fragile-looking-
+[https://dl-web.dropbox.com/get/tmp/rawdata5.csv?_subject_uid=794465&w=AAAJWP3B47gxnuOH-JYC5_OqN9XVw7vR5c1G5yFI0FFS2w&dl=1](https://dl-web.dropbox.com/get/tmp/rawdata5.csv?_subject_uid=794465&w=AAAJWP3B47gxnuOH-JYC5_OqN9XVw7vR5c1G5yFI0FFS2w&dl=1)
 
-Alternatively we can use [rawgit.com](http://rawgit.com/), which
+
+For resources on GitHub we can alternatively
+use the third-party [rawgit.com](http://rawgit.com/), which
 persists a versioned copy of the GitHub file on its content-delivery
 network, and also provides the correct Content-Type.
 
