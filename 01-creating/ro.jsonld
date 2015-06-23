@@ -1,4 +1,4 @@
-{ "@id": "#ro",
+{ "@id": "http://purl.org/wf4ever/ro-ex1",
   "@context": ["https://w3id.org/bundle/context"],
   "aggregates": [
     "https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/rawdata5.csv",
