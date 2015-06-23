@@ -12,7 +12,9 @@ general [JSON](http://json.org/) and Linux/UNIX shell knowledge.
 
 *License*: [BSD 2-clause](http://opensource.org/licenses/BSD-2-Clause) - see [LICENSE](../LICENSE)
 
-*Authors*: [Stian Soiland-Reyes](http://orcid.org/0000-0001-9842-9718), [Norman Morrison](http://www.cs.manchester.ac.uk/about-us/staff/profile/?ea=Norman.Morrison)
+*Authors*: [Stian Soiland-Reyes](http://orcid.org/0000-0001-9842-9718), 
+[Norman Morrison](http://www.cs.manchester.ac.uk/about-us/staff/profile/?ea=Norman.Morrison), 
+[Finn Bacall](http://orcid.org/0000-0002-0048-3300)
 
 
 ## Overview
@@ -165,7 +167,7 @@ _Note_: The `@id` above was set to `#ro` to distinguish the Research Object from
 
 ## Identity
 
-
+**TODO**
 
 
 ## Annotations
