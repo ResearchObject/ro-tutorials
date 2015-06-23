@@ -345,13 +345,13 @@ This identifier has several issues:
 additional metadata - but the analysis used the raw CSV file, not the
 GitHub webpage.
 
-To avoid the subject to change, we'll try to use the host's internal
+To avoid the content to change, we'll try to use the host's internal
 versioning/snapshot features, if it exists. For GitHub this could
-be using the git commit identifiers:
+be achieved with the git commit identifiers:
 
 [https://github.com/ResearchObject/ro-tutorials/blob/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv](https://github.com/ResearchObject/ro-tutorials/blob/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv)
 
-To solve #3 we can instead use the "Raw" button at GitHub:
+To solve #3 we can use the _Raw_ button at GitHub:
 
 [https://raw.githubusercontent.com/ResearchObject/ro-tutorials/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv](https://raw.githubusercontent.com/ResearchObject/ro-tutorials/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv)
 
@@ -362,10 +362,9 @@ which may be hard to find, e.g. Dropbox's [web rendering](https://www.dropbox.co
 links to the fragile-looking-
 [https://dl-web.dropbox.com/get/tmp/rawdata5.csv?_subject_uid=794465&w=AAAJWP3B47gxnuOH-JYC5_OqN9XVw7vR5c1G5yFI0FFS2w&dl=1](https://dl-web.dropbox.com/get/tmp/rawdata5.csv?_subject_uid=794465&w=AAAJWP3B47gxnuOH-JYC5_OqN9XVw7vR5c1G5yFI0FFS2w&dl=1)
 
-
 For resources on GitHub we can alternatively
 use the third-party [rawgit.com](http://rawgit.com/), which
-persists a versioned copy of the GitHub file on its content-delivery
+persists a copy of the GitHub file on its content-delivery
 network, and also provides the correct Content-Type.
 
 [https://cdn.rawgit.com/ResearchObject/ro-tutorials/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv](https://cdn.rawgit.com/ResearchObject/ro-tutorials/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv)
@@ -375,7 +374,7 @@ to the CSV and opens nicely in our spreadsheet software.
 We have done that at the cost of relying on a third-party
 provider.
 
-You will face similar challenges when linking to resources on cloud services
+You will face similar challenges if linking to resources on cloud services
 like Dropbox, Google Drive and your own content and data management systems.
 The persistency measures you need to take for your research object depends
 on the purpose of the RO and the linked resource.
@@ -383,7 +382,7 @@ on the purpose of the RO and the linked resource.
 For instance, a Research Object Bundle that is to
 be deposited at a publisher as part of a peer-reviewed article
 should be constructed so it would still have meaning beyond the lifetime of
-cloud services and even your own institution. A Research Object that is a
+cloud services and your own institution's servers. A Research Object that is a
 "work in progress" within a Dropbox folder can be more lax and link
 directly to "live" resources.
 
@@ -392,9 +391,12 @@ directly to "live" resources.
 
 In some cases, not being able to access a resource is desired. For instance, if
 you are creating a research object that also aggregate patient data, you might
-want to still aggregate those by URIs with their own restrictive access control,
-so that you can more freely publish and distribute your research object
-and metadata, yet remain in control over access to the sensitive data.
+want to aggregate those by URIs, which when accessed has a more restrictive
+access control and firewalls.
+
+In this way you can publish and distribute your research object
+and metadata openly, yet remain in control over access to the sensitive data.
+
 
 ### bundledAs
 
