@@ -14,6 +14,8 @@ latest=None
 
 for row in csv.reader(open("rawdata5.csv")):
     name = row[0]
+    if name == "Name":
+        continue # Header row
     start = int(row[1])
     stop = int(row[2])
 
