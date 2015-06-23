@@ -72,23 +72,101 @@ files:
 * [`paper3.pdf`](paper3.pdf)
 
 
-In the Research Object Bundle approach, we simply add these three files to a ZIP file with our chosen filenames. The RO Bundle specification has one [additional requirement](https://w3id.org/bundle/#ucf) for a special file `mimetype`, that indicate that the ZIP-file is a Research Object and not just any ZIP file.
+### Aggregating within an RO Bundle
 
-In the shell we can make this file like this:
+In the RO Bundle approach, we can add these three files to a ZIP file with our chosen filenames. The RO Bundle specification has one [additional requirement](https://w3id.org/bundle/#ucf) for a special file `mimetype`, that must be the first file in the ZIP file to indicate it is a Research Object. In the shell we can create such a ZIP file like this:
 
+```bash
+echo -n application/vnd.wf4ever.robundle+zip > mimetype
+zip -0 -X example.bundle.zip mimetype
 ```
 
+Alternatively you may use the [empty.bundle.zip](empty.bundle.zip) as a starting point:
+
+```bash
+cp empty.bundle.zip example.bundle.zip 
 ```
 
-In a _Linked Data_ approach it is simply anything that can be adressed with a _URI_, typically starting with `http://` or `https://`. So the first step is to ensure we have made our resources available on the web:
+Adding the files to aggregate to the ZIP:
 
-* 
-* 
-* 
+```bash
+zip example.bundle.zip rawdata5.csv paper3.pdf analyse2.py
+```
+
+A Research Object Bundle must also include a [manifest](https://w3id.org/bundle/#manifest-json) that declares the aggregated
+resources and optionally their metadata. The filename for the manifest is [`.ro/manifest.json`](.ro/manifest.json), and is in 
+[JSON](http://json.org/) format.
+
+A minimal manifest for our example would be:
+
+```json
+{ "@id": "/",
+  "@context": ["https://w3id.org/bundle/context"],
+  "aggregates": [
+    "/rawdata5.csv",
+    "/paper3.pdf",
+    "/analyse2.py"
+  ]
+}
+```
+
+The `@id` and `@context` should generally be fixed as above.
+
+Note that the `aggregates` filenames are listed as relative URIs within the ZIP file, 
+and should start with `/` with any special characters like space must 
+in the manifest 
+[%-escaped](https://researchobject.github.io/specifications/bundle/#escaping)
+appropriately.
+
+You can now add the manifest to the RO bundle:
+
+```bash
+zip example.bundle.zip .ro/manifest.json 
+```
+
+`example.bundle.zip` is now a complete minimal Research Object Bundle for the above resources. 
+The later sections will show how we can augment this with additional metadata to differentiate
+it from a plain ZIP file.
+
+
+### Aggregating as Linked Data
+
+In the alternative _Linked Data_ approach there is no single file to download the complete Research Object. Instead
+the manifest will have to link to resources that can be adressed with a _URI_, typically starting with `http://` or `https://`, 
+and itself be published on the web.
+
+So the first step is to ensure we have made our resources available on the web. For simplicity of this tutorial, 
+we naively use the URIs at GitHub, but any accessible URI would be valid. (see [identity section](#Identity)).
+
+* https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/analyse2.py
+* https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/rawdata5.csv
+* https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/paper3.pdf 
+
+A minimal Research Object manifest in [JSON-LD](http://json-ld.org/) that aggregates these 
+would look like this:
+
+```json
+{ "@id": "#ro",
+  "@context": ["https://w3id.org/bundle/context"],
+  "aggregates": [
+    "https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/rawdata5.csv",
+    "https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/paper3.pdf",
+    "https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/analyse2.py"
+  ]
+}
+```
+
+If we provide such a JSON file on the web, and ideally make its Content-Type be `application/ld+json`, we have created
+Linked Data. The above example has been published as
+[https://rawgit.com/ResearchObject/ro-tutorials/master/01-creating/ro.jsonld#ro](https://rawgit.com/ResearchObject/ro-tutorials/master/01-creating/ro.jsonld#ro) which is a valid Resarch Object as Linked Data, and thus its manifest can also be [converted to other RDF formats](http://rdf.greggkellogg.net/distiller?format=turtle&in_fmt=jsonld&uri=https://rawgit.com/ResearchObject/ro-tutorials/master/01-creating/ro.jsonld#ro), if so desired.
+
+_Note_: The `@id` above was set to `#ro` to distinguish the Research Object from its particular manifest as JSON-LD. Other mechanisms include setting the `@id` to absolute URI which on retrieval do a HTTP `303 See Other` redirect to a separate URI for the JSON-LD manifest, often through a permalink service like [w3id.org](https://w3id.org/) or [purl.org](http://purl.org/).
 
 
 ## Identity
-**TODO**
+
+
+
 
 ## Annotations
 .. and provenance
