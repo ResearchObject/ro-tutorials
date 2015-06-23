@@ -63,12 +63,13 @@ Each of these have their strengths and weaknesses that we'll cover in detail.
 
 ## Aggregation
 
-At the core of a Research Object is the _aggregation_ of the related resources. In this example, the three resources to aggregate are available as individual files, which makes this bit easier:
+At the core of a Research Object is the _aggregation_ of the related resources.
+In this example, the three resources to aggregate are available as individual
+files:
 
-* `rawdata5.csv`
-* `analyse2.py`
-* `paper4.pdf`
-
+* [`rawdata5.csv`](rawdata5.csv)
+* [`analyse2.py`](analyse2.py)
+* [`paper3.pdf`](paper3.pdf)
 
 
 In the Research Object Bundle approach, we simply add these three files to a ZIP file with our chosen filenames. The RO Bundle specification has one [additional requirement](https://w3id.org/bundle/#ucf) for a special file `mimetype`, that indicate that the ZIP-file is a Research Object and not just any ZIP file.
