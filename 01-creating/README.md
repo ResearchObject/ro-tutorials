@@ -2,7 +2,9 @@
 
 This is a developer tutorial for creating and consuming [Research Objects](http://www.researchobject.org/).
 This tutorial is programming language-agnostic, but assumes some
-generalk [JSON](http://json.org/) and shell knowledge.  
+general [JSON](http://json.org/) and Linux/UNIX shell knowledge.  
+(Translating shell commands to Windows Powershell equivalent is left as an exercise for the reader.)
+
 
 *Status*: **ROUGH DRAFT**: As of 2015-06-22, this document is a *rough draft* in progress. Feel free to help 
 **improve** by providing [bugs/wishws/suggestions](https://github.com/ResearchObject/ro-tutorials/issues) and 
@@ -47,7 +49,7 @@ A software tool or researcher that pick up the produced research object should b
 * The data was consumed by the script
 * The paper is supported by the data and running of the script
 
-## Implementations
+## Implementation choices
 
 At the core, [Research Object](http://www.researchobject.org/specifications/) (RO) is a model and vocabulary for describing an aggregation of resources that form part of a larger whole. To realize this model, however, some technology choices also
 needs to be done.
@@ -57,9 +59,32 @@ While the RO model in theory can be implemented by anything from an [Excel sprea
 * [Linked Data](http://www.w3.org/standards/semanticweb/data) on the web  - a series of HTTP accessible resources with links to relate each-other
 * [Research Object Bundle](http://www.researchobject.org/initiative/ro-bundle-zip/) - a self-contained research object as a ZIP-file
 
+Each of these have their strengths and weaknesses that we'll cover in detail. 
 
 ## Aggregation
-**TODO**
+
+At the core of a Research Object is the _aggregation_ of the related resources. In this example, the three resources to aggregate are available as individual files, which makes this bit easier:
+
+* `rawdata5.csv`
+* `analyse2.py`
+* `paper4.pdf`
+
+
+
+In the Research Object Bundle approach, we simply add these three files to a ZIP file with our chosen filenames. The RO Bundle specification has one [additional requirement](https://w3id.org/bundle/#ucf) for a special file `mimetype`, that indicate that the ZIP-file is a Research Object and not just any ZIP file.
+
+In the shell we can make this file like this:
+
+```
+
+```
+
+In a _Linked Data_ approach it is simply anything that can be adressed with a _URI_, typically starting with `http://` or `https://`. So the first step is to ensure we have made our resources available on the web:
+
+* 
+* 
+* 
+
 
 ## Identity
 **TODO**
