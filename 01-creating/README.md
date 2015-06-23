@@ -405,17 +405,16 @@ requires the expanded `{ "uri": ".."} ` form of `aggregates`:
 
 ```json
 "aggregates": [
-  { "uri": "http://dx.doi.org/10.5281/zenodo.18877",
-    "bundledAs": { "uri": "urn:uuid:55fd1801-046c-4de3-ac64-f7294bf97b98"}
-  },
-  { "uri": "/analyse2.py",
-    "bundledAs": { "uri": "urn:uuid:3ce09074-9ce6-4b14-b878-f4d1fa4191df"}
-  },
-  { "uri": "/rawdata5.csv",
-    "bundledAs": { "uri": "urn:uuid:c8f5ec32-31b6-47a8-8c8e-6e0e281516b7"}
-  }
-]
-]
+    { "uri": "http://dx.doi.org/10.5281/zenodo.18877",
+      "bundledAs": { "uri": "urn:uuid:55fd1801-046c-4de3-ac64-f7294bf97b98"}
+    },
+    { "uri": "/analyse2.py",
+      "bundledAs": { "uri": "urn:uuid:3ce09074-9ce6-4b14-b878-f4d1fa4191df"}
+    },
+    { "uri": "/rawdata5.csv",
+      "bundledAs": { "uri": "urn:uuid:c8f5ec32-31b6-47a8-8c8e-6e0e281516b7"}
+    }
+  ]
 }
 ```
 
@@ -427,26 +426,20 @@ from several research objects.
 
 These identifiers might subsequently be used in embedded and external
 annotations, e.g. to describe _why_ a particular file is in the Research Object,
-or for a third-party to unambiguously cite a resource within your research object.
+or for a third-party to unambiguously _cite_ a resource within your research object.
 As `urn:uuid:` URIs, they are however not resolvable, and therefore should also
 be accompanied with links to the Research Object Bundle and/or the freestanding
 resources.
-
-
 
 
 ## Provenance
 
 **TODO**
 
+* http://purl.org/pav/html
+* http://www.w3.org/TR/prov-primer/
+
+
 ## Annotations
 
 **TODO**
-
-
-
-Links:
-
-* http://purl.org/pav/html
-* http://www.w3.org/TR/prov-primer/
-]
