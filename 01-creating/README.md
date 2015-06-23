@@ -245,9 +245,9 @@ In our Linked Data Research Object, we aggregated:
 
 This identifier has several issues:
 
-1) Its content is subject to change (it reflects the current `master` branch)
-2) Its syntax might change (e.g. if GitHub stop using `blob/master`)
-3) Resolving the identifier presents a HTML rendering of the CSV file with
+1. Its content is subject to change (it reflects the current `master` branch)
+2. Its syntax might change (e.g. if GitHub stop using `blob/master`)
+3. Resolving the identifier presents a HTML rendering of the CSV file with
 additional metadata - but the analysis used the raw CSV file, not the
 GitHub webpage.
 
