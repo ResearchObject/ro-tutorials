@@ -74,7 +74,7 @@ files:
 * [`paper3.pdf`](paper3.pdf)
 
 
-### Aggregating within an RO Bundle
+### Aggregating in an RO Bundle
 
 In the RO Bundle approach, we can add these three files to a ZIP file with our chosen filenames. The RO Bundle specification has one [additional requirement](https://w3id.org/bundle/#ucf) for a special file `mimetype`, that must be the first file in the ZIP file to indicate it is a Research Object. In the shell we can create such a ZIP file like this:
 
