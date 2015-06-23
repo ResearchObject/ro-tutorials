@@ -264,12 +264,13 @@ so we can probably not rely on the above still working in the future.
 
 Alternatively we can use [rawgit.com](http://rawgit.com/), which
 persists a versioned copy of the GitHub file on its content-delivery
-network:
+network, and also provides the correct Content-Type.
 
 [https://cdn.rawgit.com/ResearchObject/ro-tutorials/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv](https://cdn.rawgit.com/ResearchObject/ro-tutorials/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv)
 
 Now we have achieved a versioned and unchanging URI that resolves directly
-to the CSV. We have done that at the cost of relying on a third-party
+to the CSV and opens nicely in our spreadsheet software.
+We have done that at the cost of relying on a third-party
 provider.
 
 You will face similar challenges when linking to resources on cloud services
