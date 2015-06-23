@@ -1,5 +1,4 @@
-.
-# Tutorial #01: Creating a Research Object
+# Tutorial #1: Creating a Research Object
 
 This is a developer tutorial for creating and consuming [Research Objects](http://www.researchobject.org/).
 This tutorial is programming language-agnostic, but assumes some
@@ -62,7 +61,7 @@ While the RO model in theory can be implemented by anything from an [Excel sprea
 * [Linked Data](http://www.w3.org/standards/semanticweb/data) on the web  - a series of HTTP accessible resources with links to relate each-other
 * [Research Object Bundle](http://www.researchobject.org/initiative/ro-bundle-zip/) - a self-contained research object as a ZIP-file
 
-Each of these have their strengths and weaknesses that we'll cover in detail.
+Each of these have their strengths and weaknesses that we'll try to cover in detail below.
 
 ## Aggregation
 
@@ -97,7 +96,7 @@ zip example.bundle.zip rawdata5.csv paper3.pdf analyse2.py
 ```
 
 A Research Object Bundle must also include a [manifest](https://w3id.org/bundle/#manifest-json) that declares the aggregated
-resources and optionally their metadata. The the manifest is named [`.ro/manifest.json`](.ro/manifest.json), and is in
+resources and optionally their metadata. The manifest is named [`.ro/manifest.json`](.ro/manifest.json), and is in
 [JSON](http://json.org/) format.
 
 A minimal manifest for our example would be:
@@ -115,11 +114,11 @@ A minimal manifest for our example would be:
 
 Do not change the `@id` and `@context` from the above values.
 
-Note that the `aggregates` filenames are listed as relative URIs within the ZIP file,
+_Note: aggregates` filenames are listed as relative URIs within the ZIP file,
 and should start with `/` with any special characters like space must
 in the manifest
 [%-escaped](https://researchobject.github.io/specifications/bundle/#escaping)
-appropriately.
+appropriately._
 
 You can now add the manifest to the RO bundle:
 
@@ -165,14 +164,109 @@ If we provide such a JSON file on the web, and ideally make its Content-Type be 
 Linked Data. The above example has been published as
 [https://rawgit.com/ResearchObject/ro-tutorials/master/01-creating/ro.jsonld#ro](https://rawgit.com/ResearchObject/ro-tutorials/master/01-creating/ro.jsonld#ro) which is a valid Resarch Object as Linked Data, and thus its manifest can also be [converted to other RDF formats](http://rdf.greggkellogg.net/distiller?format=turtle&in_fmt=jsonld&uri=https://rawgit.com/ResearchObject/ro-tutorials/master/01-creating/ro.jsonld#ro), if so desired.
 
-_Note_: The `@id` above was set to `#ro` to distinguish the Research Object from its particular manifest as JSON-LD. Other mechanisms include setting the `@id` to absolute URI which on retrieval do a HTTP [303 See Other](http://www.w3.org/TR/cooluris/#r303gendocument) redirect to a separate URI for the JSON-LD manifest, often through a permalink service like [w3id.org](https://w3id.org/) or [purl.org](http://purl.org/).
 
 
 ## Identity
 
-**TODO**: Identity of the RO itself.  
- https://w3id.org/bundle#absolute-uris
- https://w3id.org/bundle#manifest-bundledAs
+It is important to be able to identify a Research Object.
+The RO identity serves multiple purposes,
+including:
+
+1. To uniquely cite or reference a research object
+2. To describe the research object in annotations
+3. To relate research objects to each other
+4. To retrieve the research object
+
+### Identifying Linked Data Research Objects
+
+A Linked Data Research Object should follow the rules
+for [Cool URIs for the Semantic Web](http://www.w3.org/TR/cooluris/).
+Making sure your RO manifest is on a stable and platform-neutral URI space is a
+good start. If your RO URI looks like
+`http://underthedesk5.example.com/wordpress-1.3.2/download.php?attachment=155&action=doit`
+you still have some work to do.
+
+In the RO manifest, the top-level `@id` attribute defines the identity of the
+described Research Object.
+It is important to distinguish URIs for the Research Object and its manifest.
+For Linked Data ROs, this is easiest achieved by declaring the `@id`
+with a [hash URI](http://www.w3.org/TR/cooluris/#hashuri) like `#ro`, which
+would then be a relative URI from where the manifest was retrieved from.
+
+Another solution is to use an absolute URI for that on HTTP retrieval do a
+[303 See Other](http://www.w3.org/TR/cooluris/#r303gendocument) redirect to a
+separate URI for the JSON-LD manifest, often through a third-party
+permalink service like [w3id.org](https://w3id.org/) or
+[purl.org](http://purl.org/), which would also give you
+flexibility on the URL to host the manifest from.
+In this case the manifest should specify the permalink as it's `@id`, e.g.
+[http://purl.org/wf4ever/ro-ex1](http://purl.org/wf4ever/ro-ex1)
+
+### Identifying Research Object Bundles
+
+An embedded permalink is often not a good solution for Research Object Bundles.
+While [http://purl.org/wf4ever/bundle-ex1](http://purl.org/wf4ever/bundle-ex1)
+is probably a good identifier for the RO, if this identifier was also explicitly
+mentioned in the embedded manifest, we face some challenges:
+
+1) The identifier must be known before the ZIP file is finished - ruling out
+unique hash/commit-like identifiers
+2) Two downloads of the ZIP file might claim to be equal, even if one
+of them might be a newer version with different content.
+3) A user might modify the ZIP file without changing the `@id`
+
+Unless you have control over these aspects, we recommend that you
+instead feature  prominently the identifier for the
+research object wherever you link to it. This typically means the use
+of a persistent identifier and versioning scheme rather than a
+"?download" style link.
+
+A system that is generating a Research Object Bundle on the fly may
+however describe which "live" RO it came from, using
+[`retrievedFrom`](https://w3id.org/bundle/#retrievedFrom)
+and friends:
+
+```json
+{ "@id": "/",
+  "retrievedFrom": "https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/example.bundle.zip?raw=true",
+  "retrievedOn": "2015-06-23T16:24:00+0100",
+  "retrievedBy": { "name": "Stian Soiland-Reyes", "orcid": "http://orcid.org/0000-0001-9842-9718" },
+  "aggregates": [ "..." ]
+}
+```
+
+### Where is / in the RO bundle?
+
+A Research Object Bundle discovered "in the wild" can be uniquely identified
+by generating a non-resolvable
+UUID or SHA-based `app://` URI, as
+[detailed in the RO bundle specification](https://w3id.org/bundle/#absolute-uris).
+
+There are three variants, all of which will result in a URI like:
+
+```
+app://77a2d494-bbd6-410e-a0cf-d48abd5e0ea9/
+```
+
+This would be both an identifier for the Research Object Bundle itself,
+but also for the `/` folder of the ZIP file. Thus
+a manifest claiming `"@id": "/"` would resolve to the
+above absolute URI.
+
+This forms the base URI and can thus be used to identify any resource
+in a parsed RO Bundle Zip file, e.g.
+`app://77a2d494-bbd6-410e-a0cf-d48abd5e0ea9/analyse2.py`.
+
+Which variant to use to resolve depends on the uniqueness constraints for
+the URI and the research object. The SHA-256 checksum of the ZIP-file is useful
+for identifying a RO Bundle uniquely based on its binary content, no matter
+where it is hosted, but would always give a new identifier for ROs that
+are generated on demand, and does not take into account any changes of
+external URIs. A location-based UUID would be the same for any
+RO Bundle downloaded from the same location, even if their content might have
+changed. A random UUID is most probably uniquely, and useful for security
+sandboxing, but have no direct relation to the Research Object Bundle.
+
 
 ### Identifying aggregated resources
 
@@ -301,6 +395,44 @@ you are creating a research object that also aggregate patient data, you might
 want to still aggregate those by URIs with their own restrictive access control,
 so that you can more freely publish and distribute your research object
 and metadata, yet remain in control over access to the sensitive data.
+
+### bundledAs
+
+A research object may also want to assign identifiers for its
+bundled resources, using the [bundledAs](https://w3id.org/bundle#manifest-bundledAs)
+statement and random [urn:uuid:](http://www.ietf.org/rfc/rfc4122) URIs. This
+requires the expanded `{ "uri": ".."} ` form of `aggregates`:
+
+```json
+"aggregates": [
+  { "uri": "http://dx.doi.org/10.5281/zenodo.18877",
+    "bundledAs": { "uri": "urn:uuid:55fd1801-046c-4de3-ac64-f7294bf97b98"}
+  },
+  { "uri": "/analyse2.py",
+    "bundledAs": { "uri": "urn:uuid:3ce09074-9ce6-4b14-b878-f4d1fa4191df"}
+  },
+  { "uri": "/rawdata5.csv",
+    "bundledAs": { "uri": "urn:uuid:c8f5ec32-31b6-47a8-8c8e-6e0e281516b7"}
+  }
+]
+]
+}
+```
+
+The `bundledAs` identifiers must be unique for each resource in each
+research object and kind of represents
+"this resource as part of this particular RO".
+This is particularly useful for external URIs that may be referenced
+from several research objects.
+
+These identifiers might subsequently be used in embedded and external
+annotations, e.g. to describe _why_ a particular file is in the Research Object,
+or for a third-party to unambiguously cite a resource within your research object.
+As `urn:uuid:` URIs, they are however not resolvable, and therefore should also
+be accompanied with links to the Research Object Bundle and/or the freestanding
+resources.
+
+
 
 
 ## Provenance
