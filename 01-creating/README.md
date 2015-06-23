@@ -239,8 +239,10 @@ other identifiers.
 
 ### Example: GitHub identifiers
 
-In our Linked Data Research Object, we aggregated
+In our Linked Data Research Object, we aggregated:
+
 [https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/rawdata5.csv](https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/rawdata5.csv).
+
 This identifier has several issues:
 
 1) Its content is subject to change (it reflects the current `master` branch)
