@@ -1,6 +1,7 @@
 # Tutorial #1: Creating a Research Object
 
-This is a developer tutorial for creating and consuming [Research Objects](http://www.researchobject.org/).
+This is a developer tutorial for creating and consuming
+[Research Objects](http://www.researchobject.org/) (RO).
 This tutorial is programming language-agnostic, but assumes some
 general [JSON](http://json.org/) and Linux/UNIX shell knowledge.  
 (Translating shell commands to Windows Powershell equivalent is left as an exercise for the reader.)
@@ -435,6 +436,13 @@ resources.
 
 
 ## Provenance
+
+One important feature of Research Objects is to provide hooks to describe the
+metadata and provenance of the aggregated resources and the RO itself.
+The [provenance section](https://w3id.org/bundle/#provenance) specifies how to
+provide such high-level metadata in the manifest.
+
+
 
 **TODO**
 
