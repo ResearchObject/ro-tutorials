@@ -112,7 +112,7 @@ A minimal manifest for our example would be:
 }
 ```
 
-The `@id` and `@context` should generally be fixed as above.
+Do not change the `@id` and `@context` from the above values.
 
 Note that the `aggregates` filenames are listed as relative URIs within the ZIP file, 
 and should start with `/` with any special characters like space must 
