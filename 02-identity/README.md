@@ -1,4 +1,4 @@
-# Tutorial #2: Identifying a Research Object and its resources
+# Tutorial #2: Identity of a Research Object
 
 This is part of [developer tutorials](../) for creating and consuming
 [Research Objects](http://www.researchobject.org/) (RO).
