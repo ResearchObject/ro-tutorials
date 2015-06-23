@@ -6,7 +6,7 @@ general [JSON](http://json.org/) and Linux/UNIX shell knowledge.
 (Translating shell commands to Windows Powershell equivalent is left as an exercise for the reader.)
 
 
-*Status*: **ROUGH DRAFT**: As of 2015-06-22, this document is a *rough draft* in progress. Feel free to help 
+*Status*: **ROUGH DRAFT**: As of 2015-06-23, this document is a *rough draft* in progress. Feel free to help 
 **improve** by providing [bugs/wishws/suggestions](https://github.com/ResearchObject/ro-tutorials/issues) and 
 [changes](https://github.com/ResearchObject/ro-tutorials/pulls).
 
