@@ -170,6 +170,10 @@ _Note_: The `@id` above was set to `#ro` to distinguish the Research Object from
 
 ## Identity
 
+**TODO**: Identity of the RO itself.  
+ https://w3id.org/bundle#absolute-uris
+ https://w3id.org/bundle#manifest-bundledAs
+
 In our research object bundle, we aggregated resources by adding them as files
 to the ZIP-file. Using the relative URIs, it is unambiguous that
 `/paper3.pdf` refers to the included PDF. This is however less useful if we have
