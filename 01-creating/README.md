@@ -96,7 +96,7 @@ zip example.bundle.zip rawdata5.csv paper3.pdf analyse2.py
 ```
 
 A Research Object Bundle must also include a [manifest](https://w3id.org/bundle/#manifest-json) that declares the aggregated
-resources and optionally their metadata. The filename for the manifest is [`.ro/manifest.json`](.ro/manifest.json), and is in 
+resources and optionally their metadata. The the manifest is named [`.ro/manifest.json`](.ro/manifest.json), and is in 
 [JSON](http://json.org/) format.
 
 A minimal manifest for our example would be:
