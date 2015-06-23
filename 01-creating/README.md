@@ -174,6 +174,8 @@ _Note_: The `@id` above was set to `#ro` to distinguish the Research Object from
  https://w3id.org/bundle#absolute-uris
  https://w3id.org/bundle#manifest-bundledAs
 
+### Identifying aggregated resources
+
 In our research object bundle, we aggregated resources by adding them as files
 to the ZIP-file. Using the relative URIs, it is unambiguous that
 `/paper3.pdf` refers to the included PDF. This is however less useful if we have
@@ -199,6 +201,8 @@ we'll replace the links to the paper PDFs with a DOI link:
   ]
 ```
 
+### Persistent identifiers
+
 Different research domains may have repositories that are already commonly
 used and which assign persistent identifiers. Generic repositories
 of research data and software include [figshare](http://figshare.com/)
@@ -209,6 +213,9 @@ the
 [10 Simple Rules for design, provision and reuse of persistent identifiers for live science data](http://dx.doi.org/10.5281/zenodo.18003)
 and are ["Cool URIs"](http://www.w3.org/Provider/Style/URI.html). This includes
 ensuring that the URIs don't change and remain available.
+
+
+### Resources that change
 
 The semantics of aggregating an external URI changes. Rather than
 the research object aggregating the actual PDF you would instead be aggregating
@@ -225,10 +232,60 @@ we are not just of risk of Google Drive changing that fragile URL syntax
 so the data can no longer be accessed, but also that the data itself might
 change and no longer be consistent with the paper or the research object.
 
-For fragile resources it is best to archive a snapshot
+For "fragile" resources it is best to archive a snapshot
 within the Research Object or within your own web space, and rather
-express the _provenance_ of the file to indicate its history and
+express the [provenance](#Provenance) of the file to indicate its history and
 other identifiers.
+
+### Example: GitHub identifiers
+
+In our Linked Data Research Object, we aggregated
+[https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/rawdata5.csv](https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/rawdata5.csv).
+This identifier has several issues:
+
+1) Its content is subject to change (it reflects the current `master` branch)
+2) Its syntax might change (e.g. if GitHub stop using `blob/master`)
+3) Resolving the identifier presents a HTML rendering of the CSV file with
+additional metadata - but the analysis used the raw CSV file, not the
+GitHub webpage.
+
+To avoid the subject to change, we'll try to use the host's internal
+versioning/snapshot features, if it exists. For GitHub this could
+be using the git commit identifiers:
+
+[https://github.com/ResearchObject/ro-tutorials/blob/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv](https://github.com/ResearchObject/ro-tutorials/blob/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv)
+
+To solve #3 we can instead use the "Raw" button at GitHub:
+
+[https://raw.githubusercontent.com/ResearchObject/ro-tutorials/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv](https://raw.githubusercontent.com/ResearchObject/ro-tutorials/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv)
+
+The URIs for raw files on GitHub has changed several times over the last years,
+so we can probably not rely on the above still working in the future.
+
+Alternatively we can use [rawgit.com](http://rawgit.com/), which
+persists a versioned copy of the GitHub file on its content-delivery
+network:
+
+[https://cdn.rawgit.com/ResearchObject/ro-tutorials/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv](https://cdn.rawgit.com/ResearchObject/ro-tutorials/9228550315a6f9a2b969abd19003b5e1ec1837e1/01-creating/rawdata5.csv)
+
+Now we have achieved a versioned and unchanging URI that resolves directly
+to the CSV. We have done that at the cost of relying on a third-party
+provider.
+
+You will face similar challenges when linking to resources on cloud services
+like Dropbox, Google Drive and your own content and data management systems.
+The persistency measures you need to take for your research object depends
+on the purpose of the RO and the linked resource.
+
+For instance, a Research Object Bundle that is to
+be deposited at a publisher as part of a peer-reviewed article
+should be constructed so it would still have meaning beyond the lifetime of
+cloud services and even your own institution. A Research Object that is a
+"work in progress" within a Dropbox folder can be more lax and link
+directly to "live" resources.
+
+
+### Restricting access
 
 In some cases, not being able to access a resource is desired. For instance, if
 you are creating a research object that also aggregate patient data, you might
