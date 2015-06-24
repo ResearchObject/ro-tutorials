@@ -18,4 +18,52 @@ general [JSON](http://json.org/) and Linux/UNIX shell knowledge.
 [Finn Bacall](http://orcid.org/0000-0002-0048-3300)
 
 
+## Previous step
 
+This tutorial assumes you have already completed the previous
+[tutorial on identity of ROs](../02-identity/).
+
+## Provenance
+
+A Research Object often combines resources that have a diverse authorship
+and history. Tracking the provenance of the resources and the RO itself
+supports their authenticity and traceability, and gives authors
+and contributors credit for their individual works.
+
+In Research Objects, there are several provisions for tracking provenance:
+
+1. In the manifest on a per-resource basis
+2. In annotations, connecting related resources
+3. In a separate provenance trace (e.g. log of a workflow run)
+
+The RO Bundle specifications provides a selection of
+[common provenance attributes](https://w3id.org/#provenance) which
+can be used directly within the manifest.
+
+Perhaps the most important aspect to record in any research object is the
+creation of the RO itself:
+
+```json
+{
+  "@context": ["https://w3id.org/bundle/context"],
+  "@id": "/",
+  "createdOn": "2015-06-24T08:05:00+0100",
+  "createdBy": {
+    "name": "Stian Soiland-Reyes"
+  },
+  "aggregates": [  
+    ".."
+  ]
+}
+```
+
+RO Bundle relies on the existing
+provenance vocabulary [PAV](http://purl.org/pav/html) to
+provide the definitions of
+[createdOn](http://purl.org/pav/html#http://purl.org/pav/createdOn),
+[createdBy](http://purl.org/pav/html#http://purl.org/pav/createdBy) and friends.
+
+It is beneficial to also provide a `uri` or `orcid` for the person who
+created the research object. [ORCID](http://orcid.org)s are preferred
+as it gives a unique identifier for an academic author across
+multiple publication and authorship systems.
