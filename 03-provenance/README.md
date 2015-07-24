@@ -25,7 +25,7 @@ This tutorial assumes you have already completed the previous
 
 ## Provenance
 
-A Research Object often combines resources that have a diverse authorship
+A Research Object often combines resources that have diverse set of authord
 and history. Tracking the provenance of the resources and the RO itself
 supports their authenticity and traceability, and gives authors
 and contributors credit for their individual works.
@@ -49,7 +49,7 @@ creation of the RO itself:
   "@id": "/",
   "createdOn": "2015-06-24T08:05:00+0100",
   "createdBy": {
-    "name": "Stian Soiland-Reyes"
+    "name": "John Doe",
   },
   "aggregates": [  
     ".."
@@ -59,34 +59,47 @@ creation of the RO itself:
 
 RO Bundle relies on the existing
 provenance vocabulary [PAV](http://purl.org/pav/html) to
-provide the definitions of
+provide the definitions of terms like
 [createdOn](http://purl.org/pav/html#http://purl.org/pav/createdOn),
-[createdBy](http://purl.org/pav/html#http://purl.org/pav/createdBy) and friends.
+[createdBy](http://purl.org/pav/html#http://purl.org/pav/createdBy), which are
+based on the [W3C PROV](http://www.w3.org/TR/prov-primer/) model for provenance
+statements.
 
-### Identifying persons
+### Identifying contributors
 
-It is beneficial to also provide a `uri` or `orcid` URI for the person that
-created the research object. [ORCID](http://orcid.org)s are preferred
+It is beneficial to also provide a `uri` or `orcid` URI for the person(s) that
+created the research object or some of its resources. This helps to
+identify and distinguish contributors across resources and research objects.
+
+While providing the `name` is crucial for
+presentation purposes, names are often not globally unique, and some people
+might have multiple names.
+
+[ORCID](http://orcid.org)s are preferred
 as it gives a unique identifier for an academic author across
 multiple publication and authorship systems.
-The `uri` field can be used with any [WebId](..) to identify the person.
+
+
 
 ```json
 {
   "createdBy": {
-    "name": "Stian Soiland-Reyes",
-    "orcid": "http://orcid.org/0000-0001-9842-9718"
+    "name": "John Doe",
+    "orcid": "http://orcid.org/0000-0001-5429-1577"
   }
 }
 ```
 
 _Note: ORCIDs should be provided by the user explicitly
-(e.g. by signing in via ORCID), not looked up at ORCID using the user's
-full name - as that might match the wrong person and
-would defy the purpose of uniquely identiying the
-author._
+(e.g. by signing in via [orcid.org](http://orcid.org/),
+not looked up as a ORCID search with a
+full name - that might match the wrong person and
+would defy the purpose of uniquely identifying the
+contributor._
 
-In many cases, a system exporting a Research Object will have some
+The `uri` field can be used with any other kind of
+[WebId](http://www.w3.org/2005/Incubator/webid/spec/identity/) to identify
+the person. In many cases, a system exporting a Research Object will have some
 web resource corresponding to the user account, which can easily be used
 directly with `uri`, and thus still provide unique identification across
 research objects from the same system:
@@ -94,7 +107,8 @@ research objects from the same system:
 ```json
 {
   "createdBy": {
-    "name": "JohnDoe",
+    "name": "John Doe",
+    "orcid": "http://orcid.org/0000-0001-5429-1577",
     "uri": "http://example.com/user/johnd"
   }
 }
