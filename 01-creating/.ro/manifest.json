@@ -1,5 +1,5 @@
-{ "@id": "/",
-  "@context": ["https://w3id.org/bundle/context"],
+{ "@context": ["https://w3id.org/bundle/context"],
+  "@id": "/",
   "aggregates": [
     "/rawdata5.csv",
     "/paper3.pdf",

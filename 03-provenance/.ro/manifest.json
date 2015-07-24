@@ -2,13 +2,13 @@
   "@id": "/",
   "aggregates": [
     { "uri": "http://dx.doi.org/10.5281/zenodo.18877",
-      "bundledAs": { "uri": "urn:uuid:55fd1801-046c-4de3-ac64-f7294bf97b98"}
+      "bundledAs": { "uri": "urn:uuid:aaf448d5-bcdb-42fd-abb3-28ed4ddc93c3"}
     },
     { "uri": "/analyse2.py",
-      "bundledAs": { "uri": "urn:uuid:3ce09074-9ce6-4b14-b878-f4d1fa4191df"}
+      "bundledAs": { "uri": "urn:uuid:2562a70c-93a3-4834-9f40-dc0217ebb300"}
     },
     { "uri": "/rawdata5.csv",
-      "bundledAs": { "uri": "urn:uuid:c8f5ec32-31b6-47a8-8c8e-6e0e281516b7"}
+      "bundledAs": { "uri": "urn:uuid:81c94a59-df75-4e3d-939b-dbd366a38328"}
     }
   ],
   "createdBy": {

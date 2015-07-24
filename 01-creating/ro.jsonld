@@ -1,5 +1,5 @@
-{ "@id": "#ro",
-  "@context": ["https://w3id.org/bundle/context"],
+{ "@context": ["https://w3id.org/bundle/context"],
+  "@id": "#ro",
   "aggregates": [
     "https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/rawdata5.csv",
     "https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/paper3.pdf",

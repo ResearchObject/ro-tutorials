@@ -1,9 +1,15 @@
-{ "@id": "http://purl.org/wf4ever/ro-ex3",
+{ "@id": "http://purl.org/wf4ever/ro-ex2",
   "@context": ["https://w3id.org/bundle/context"],
   "aggregates": [
-    "https://github.com/ResearchObject/ro-tutorials/blob/master/03-provenance/rawdata5.csv",
-    "https://github.com/ResearchObject/ro-tutorials/blob/master/03-provenance/paper3.pdf",
-    "https://github.com/ResearchObject/ro-tutorials/blob/master/03-provenance/analyse2.py"
+    { "uri": "http://dx.doi.org/10.5281/zenodo.18877",
+      "bundledAs": { "uri": "urn:uuid:aaf448d5-bcdb-42fd-abb3-28ed4ddc93c3"}
+    },
+    { "uri": "https://cdn.rawgit.com/ResearchObject/ro-tutorials/eb1d5f8e1293274d4cfd070949f6eed2f0b27369/03-provenance/analyse2.py",
+      "bundledAs": { "uri": "urn:uuid:2562a70c-93a3-4834-9f40-dc0217ebb300"}
+    },
+    { "uri": "https://cdn.rawgit.com/ResearchObject/ro-tutorials/eb1d5f8e1293274d4cfd070949f6eed2f0b27369/03-provenance/rawdata5.csv",
+      "bundledAs": { "uri": "urn:uuid:81c94a59-df75-4e3d-939b-dbd366a38328"}
+    }
   ],
   "createdBy": {
     "name": "John Doe",
