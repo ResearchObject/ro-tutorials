@@ -291,17 +291,19 @@ requires the expanded `{ "uri": ".."} ` form of `aggregates`:
 }
 ```
 
-The `bundledAs` identifiers must be unique for each resource in each
-research object and kind of represents
+The `uri` within the `bundledAs` object must be unique for each resource in each
+research object and should be a [urn:uuid](https://www.ietf.org/rfc/rfc4122),
+e.g. `urn:uuid:197ec4d4-c057-489a-bbe2-2c6eb27cb134`. The bundledAs identifier
+kind of represents
 "this resource as part of this particular RO".
-This is particularly useful for external URIs that may be referenced
-from several research objects.
+This is particularly useful for
+external URIs that may be referenced from several Research Objects.
 
 These identifiers might subsequently be used in embedded and external
 annotations, e.g. to describe _why_ a particular file is in the Research Object,
 or for a third-party to unambiguously _cite_ a resource within your research object.
 As `urn:uuid:` URIs, they are however not resolvable, and therefore should also
-be accompanied with links to the Research Object Bundle and/or the freestanding
+be accompanied with links to the Research Object Bundle and/or the free-standing
 resources.
 
 ## Next step:
