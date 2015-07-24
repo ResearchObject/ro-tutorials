@@ -10,5 +10,10 @@
     { "uri": "/rawdata5.csv",
       "bundledAs": { "uri": "urn:uuid:c8f5ec32-31b6-47a8-8c8e-6e0e281516b7"}
     }
-  ]
+  ],
+  "createdBy": {
+    "name": "John Doe",
+    "orcid": "http://orcid.org/0000-0001-5429-1577",
+    "uri": "http://example.com/user/johnd"
+  }
 }

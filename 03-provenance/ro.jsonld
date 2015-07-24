@@ -1,8 +1,13 @@
-{ "@id": "http://purl.org/wf4ever/ro-ex1",
+{ "@id": "http://purl.org/wf4ever/ro-ex3",
   "@context": ["https://w3id.org/bundle/context"],
   "aggregates": [
-    "https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/rawdata5.csv",
-    "https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/paper3.pdf",
-    "https://github.com/ResearchObject/ro-tutorials/blob/master/01-creating/analyse2.py"
-  ]
+    "https://github.com/ResearchObject/ro-tutorials/blob/master/03-provenance/rawdata5.csv",
+    "https://github.com/ResearchObject/ro-tutorials/blob/master/03-provenance/paper3.pdf",
+    "https://github.com/ResearchObject/ro-tutorials/blob/master/03-provenance/analyse2.py"
+  ],
+  "createdBy": {
+    "name": "John Doe",
+    "orcid": "http://orcid.org/0000-0001-5429-1577",
+    "uri": "http://example.com/user/johnd"
+  }
 }
