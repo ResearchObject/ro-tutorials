@@ -56,28 +56,28 @@ Another solution is to use an absolute URI for that on HTTP retrieval do a
 separate URI for the JSON-LD manifest, often through a third-party
 permalink service like [w3id.org](https://w3id.org/) or
 [purl.org](http://purl.org/), which would also give you
-flexibility on the URL to host the manifest from.
+future flexibility on the server to host the manifest from.
 In this case the manifest should specify the permalink as it's `@id`, e.g.
-[http://purl.org/wf4ever/ro-ex1](http://purl.org/wf4ever/ro-ex1)
+[http://purl.org/wf4ever/ro-ex2](http://purl.org/wf4ever/ro-ex2)
 
 ### Identifying Research Object Bundles
 
 An embedded permalink is often not a good solution for Research Object Bundles.
-While [http://purl.org/wf4ever/bundle-ex1](http://purl.org/wf4ever/bundle-ex1)
+While [http://purl.org/wf4ever/bundle-ex2](http://purl.org/wf4ever/bundle-ex2)
 is probably a good identifier for the RO, if this identifier was also explicitly
 mentioned in the embedded manifest, we face some challenges:
 
-1) The identifier must be known before the ZIP file is finished - ruling out
+1. The identifier must be known before the ZIP file is finished - ruling out
 unique hash/commit-like identifiers
-2) Two downloads of the ZIP file might claim to be equal, even if one
+2. Two downloads of the ZIP file might claim to be equal, even if one
 of them might be a newer version with different content.
-3) A user might modify the ZIP file without changing the `@id`
+3. A user might modify the ZIP file without changing the `@id`
 
 Unless you have control over these aspects, we recommend that you
 instead feature  prominently the identifier for the
 research object wherever you link to it. This typically means the use
 of a persistent identifier and versioning scheme rather than a
-"?download" style link.
+`?download`-style link.
 
 A system that is generating a Research Object Bundle on the fly may
 however describe which "live" RO it came from, using
@@ -116,14 +116,17 @@ in a parsed RO Bundle Zip file, e.g.
 `app://77a2d494-bbd6-410e-a0cf-d48abd5e0ea9/analyse2.py`.
 
 Which variant to use to resolve depends on the uniqueness constraints for
-the URI and the research object. The SHA-256 checksum of the ZIP-file is useful
+the URI and the research object. The _SHA-256 checksum_ of the ZIP-file is useful
 for identifying a RO Bundle uniquely based on its binary content, no matter
 where it is hosted, but would always give a new identifier for ROs that
-are generated on demand, and does not take into account any changes of
-external URIs. A location-based UUID would be the same for any
+are generated on demand (e.g. becaue of timestamps within the ZIP-file),
+and still does not take into account any changes of external URIs.
+
+A _location-based UUID_ would be the same for any
 RO Bundle downloaded from the same location, even if their content might have
-changed. A random UUID is most probably uniquely, and useful for security
-sandboxing, but have no direct relation to the Research Object Bundle.
+changed. A _random UUID_ is most probably unique in the universe,
+and useful for security sandboxing, but have no
+direct relation to the Research Object Bundle.
 
 
 ### Identifying aggregated resources
